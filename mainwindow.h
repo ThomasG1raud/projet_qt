@@ -17,17 +17,23 @@ public:
  
 private slots:
     void about();
+    void saveFile();
 
 private:
     void createActions();
     void createMenus();
 
-    QMenu *helpMenu;
 
-    Drawing *drawing;
+    QMenu *helpMenu;
+    QMenu *fileMenu;
+
+    
 
     QAction *aboutAction;
     QAction *aboutQtAction;
+    QAction *saveAction;
+
+    Drawing *drawing;
 };
  
 #endif

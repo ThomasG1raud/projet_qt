@@ -24,6 +24,9 @@ void MainWindow::createActions(){
 
     aboutQtAction = new QAction(tr("About &Qt"), this);
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+
+    saveAction = new QAction(tr("Save"), this);
+    connect(saveAction, SIGNAL(triggered()), this, SLOT(saveFile()));
 }
 
 void MainWindow::createMenus(){
@@ -31,5 +34,22 @@ void MainWindow::createMenus(){
     helpMenu->addAction(aboutAction);
     helpMenu->addAction(aboutQtAction);
 
+
+    fileMenu = new QMenu(tr("&File"), this);
+    fileMenu->addAction(saveAction);
+    
+    menuBar()->addMenu(fileMenu);
     menuBar()->addMenu(helpMenu);
+    
+}
+
+void MainWindow::saveFile(){
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"));
+
+    if (!fileName.isEmpty()) {
+        QPixmap pixmap(drawing->size());
+        drawing->render(&pixmap);
+
+        pixmap.save(fileName, "PNG");
+    }
 }

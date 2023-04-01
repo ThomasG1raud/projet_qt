@@ -11,7 +11,6 @@ Drawing::Drawing(QWidget *parent) : QWidget(parent){
     image.fill(Qt::white);
 }
 
-
 void Drawing::mousePressEvent(QMouseEvent *event){
     if (event->button() == Qt::LeftButton) {
         start = event->pos();
