@@ -12,6 +12,7 @@ MainWindow::MainWindow(){
     setWindowTitle(tr("Paint"));
 
     resize(650, 500);
+
 }
 
 void MainWindow::about(){

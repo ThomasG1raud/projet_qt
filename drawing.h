@@ -26,6 +26,10 @@ private:
 
 public slots:
     void setImage(const QImage& newImage);
+public : 
+
+    void prettyLayout();
+
 };
 
 #endif

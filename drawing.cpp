@@ -27,6 +27,7 @@ void Drawing::mouseMoveEvent(QMouseEvent *event){
 void Drawing::mouseReleaseEvent(QMouseEvent *event){
     if (event->button() == Qt::LeftButton && drawing) {
         drawLineTo(event->pos());
+        prettyLayout();
         drawing = false;
     }
 }
@@ -50,4 +51,11 @@ void Drawing::setImage(const QImage &newImage){
     image = newImage;
     modified = true;
     update();
+}
+
+void Drawing::prettyLayout() {
+    if(modified){
+        update();
+        modified = false;
+    }
 }
