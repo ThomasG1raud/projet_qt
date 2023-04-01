@@ -40,7 +40,7 @@ void Drawing::paintEvent(QPaintEvent *event){
 
 void Drawing::drawLineTo(const QPoint &end){
     QPainter painter(&image);
-    painter.setPen(QPen(penColor, penWidth));
+    painter.setPen(QPen(penColor, penWidth, Qt::SolidLine, Qt::RoundCap));
     painter.drawLine(start, end);
     modified = true;
     update(QRect(start, end));

@@ -16,6 +16,7 @@ protected:
     void paintEvent(QPaintEvent *event) override;
 private:
     void drawLineTo(const QPoint &endPoint);
+    void prettyLayout();
     
     bool modified;
     bool drawing;
@@ -26,9 +27,8 @@ private:
 
 public slots:
     void setImage(const QImage& newImage);
-public : 
 
-    void prettyLayout();
+    
 
 };
 
