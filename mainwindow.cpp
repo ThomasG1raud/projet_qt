@@ -1,15 +1,17 @@
 #include <QtWidgets>
  
 #include "mainwindow.h"
- 
+#include "drawing.h"
 
 MainWindow::MainWindow(){
     createActions();
     createMenus();
 
-    setWindowTitle(tr("Scribble"));
+    drawing = new Drawing;
+    setCentralWidget(drawing);
+    setWindowTitle(tr("Paint"));
 
-    resize(500, 500);
+    resize(1000, 1000);
 }
 
 void MainWindow::about(){

@@ -4,6 +4,7 @@
 
 #include <QMainWindow>
  
+class Drawing;
 
  
 class MainWindow : public QMainWindow
@@ -23,7 +24,7 @@ private:
 
     QMenu *helpMenu;
 
-    QAction *openAction;
+    Drawing *drawing;
 
     QAction *aboutAction;
     QAction *aboutQtAction;
