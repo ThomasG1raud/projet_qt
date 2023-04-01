@@ -3,13 +3,11 @@
 
 #include <QWidget>
 
-class Drawing : public QWidget
-{
-    Q_OBJECT
+class Drawing : public QWidget{
+Q_OBJECT
 
 public:
     Drawing(QWidget *parent = 0);
-    void resizeToParent();
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -19,7 +17,6 @@ protected:
 private:
     void drawLineTo(const QPoint &endPoint);
     
-
     bool modified;
     bool drawing;
     int penWidth;

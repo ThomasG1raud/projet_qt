@@ -34,8 +34,7 @@ void Drawing::mouseReleaseEvent(QMouseEvent *event){
 void Drawing::paintEvent(QPaintEvent *event){
     QPainter painter(this);
     QRect fill = event->rect();
-    painter.drawImage(fill, image, fill);
-    
+    painter.drawImage(fill, image, fill);  
 }
 
 void Drawing::drawLineTo(const QPoint &end){

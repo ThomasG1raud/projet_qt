@@ -22,14 +22,21 @@ void MainWindow::createActions(){
     aboutAction = new QAction(tr("&About"), this);
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(about()));
 
+
     aboutQtAction = new QAction(tr("About &Qt"), this);
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 
     saveAction = new QAction(tr("Save"), this);
     connect(saveAction, SIGNAL(triggered()), this, SLOT(saveFile()));
+    saveAction->setShortcut(QKeySequence::Save);
 
     openAction = new QAction(tr("Open"), this);
     connect(openAction, SIGNAL(triggered()), this, SLOT(openFile()));
+    openAction->setShortcut(QKeySequence::Open);
+
+    newAction = new QAction(tr("New"), this);
+    connect(newAction, SIGNAL(triggered()), this, SLOT(newFile()));
+    newAction->setShortcut(QKeySequence::New);
 }
 
 void MainWindow::createMenus(){
@@ -39,8 +46,10 @@ void MainWindow::createMenus(){
 
 
     fileMenu = new QMenu(tr("&File"), this);
-    fileMenu->addAction(saveAction);
+    fileMenu->addAction(newAction);
     fileMenu->addAction(openAction);
+    fileMenu->addAction(saveAction);
+    
     
     menuBar()->addMenu(fileMenu);
     menuBar()->addMenu(helpMenu);
@@ -66,4 +75,14 @@ void MainWindow::openFile(){
         QPixmap pixmap(fileName);
         drawing->setImage(pixmap.toImage());
     }
+}
+
+void MainWindow::newFile(){
+
+    Drawing *newDrawing = new Drawing;
+    setCentralWidget(newDrawing);
+    delete drawing;
+    drawing = newDrawing;
+    setWindowTitle(tr("Paint - New File"));
+    resize(650, 500);
 }
