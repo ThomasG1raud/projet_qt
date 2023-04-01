@@ -1,8 +1,10 @@
-#include "main.hpp"
-#include <QPushButton>
+#include "mainwindow.h"
 #include <QApplication>
-Main::Main(QWidget *parent):
-	QWidget(parent)
+ 
+int main(int argc, char *argv[])
 {
-	setFixedSize(1000,500);
+    QApplication app(argc, argv);
+    MainWindow window;
+    window.show();
+    return app.exec();
 }
