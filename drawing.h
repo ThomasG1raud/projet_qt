@@ -9,16 +9,16 @@ class Drawing : public QWidget
 
 public:
     Drawing(QWidget *parent = 0);
-    bool openImage(const QString &fileName);
+    void resizeToParent();
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
-
 private:
     void drawLineTo(const QPoint &endPoint);
+    
 
     bool modified;
     bool drawing;
@@ -26,6 +26,9 @@ private:
     QColor penColor;
     QPoint start;
     QImage image;
+
+public slots:
+    void setImage(const QImage& newImage);
 };
 
 #endif

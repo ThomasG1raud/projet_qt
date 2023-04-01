@@ -18,6 +18,8 @@ public:
 private slots:
     void about();
     void saveFile();
+    void openFile();
+    
 
 private:
     void createActions();
@@ -32,6 +34,7 @@ private:
     QAction *aboutAction;
     QAction *aboutQtAction;
     QAction *saveAction;
+    QAction *openAction;
 
     Drawing *drawing;
 };

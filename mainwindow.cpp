@@ -11,7 +11,7 @@ MainWindow::MainWindow(){
     setCentralWidget(drawing);
     setWindowTitle(tr("Paint"));
 
-    resize(1000, 1000);
+    resize(650, 500);
 }
 
 void MainWindow::about(){
@@ -27,6 +27,9 @@ void MainWindow::createActions(){
 
     saveAction = new QAction(tr("Save"), this);
     connect(saveAction, SIGNAL(triggered()), this, SLOT(saveFile()));
+
+    openAction = new QAction(tr("Open"), this);
+    connect(openAction, SIGNAL(triggered()), this, SLOT(openFile()));
 }
 
 void MainWindow::createMenus(){
@@ -37,6 +40,7 @@ void MainWindow::createMenus(){
 
     fileMenu = new QMenu(tr("&File"), this);
     fileMenu->addAction(saveAction);
+    fileMenu->addAction(openAction);
     
     menuBar()->addMenu(fileMenu);
     menuBar()->addMenu(helpMenu);
@@ -51,5 +55,15 @@ void MainWindow::saveFile(){
         drawing->render(&pixmap);
 
         pixmap.save(fileName, "PNG");
+    }
+}
+
+
+void MainWindow::openFile(){
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("Images (*.png)"));
+
+    if (!fileName.isEmpty()) {
+        QPixmap pixmap(fileName);
+        drawing->setImage(pixmap.toImage());
     }
 }
