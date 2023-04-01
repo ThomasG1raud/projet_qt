@@ -60,29 +60,29 @@ void MainWindow::saveFile(){
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"));
 
     if (!fileName.isEmpty()) {
-        QPixmap pixmap(drawing->size());
-        drawing->render(&pixmap);
+        QImage image(drawing->size(), QImage::Format_ARGB32_Premultiplied);
+        QPainter painter(&image);
+        drawing->render(&painter);
 
-        pixmap.save(fileName, "PNG");
+        image.save(fileName, "PNG");
+        setWindowTitle(fileName);
     }
 }
-
 
 void MainWindow::openFile(){
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("Images (*.png)"));
 
     if (!fileName.isEmpty()) {
-        QPixmap pixmap(fileName);
-        drawing->setImage(pixmap.toImage());
+        QImage image(fileName);
+        drawing->setImage(image);
+        setWindowTitle(fileName);
     }
 }
 
 void MainWindow::newFile(){
-
     Drawing *newDrawing = new Drawing;
     setCentralWidget(newDrawing);
     delete drawing;
     drawing = newDrawing;
-    setWindowTitle(tr("Paint - New File"));
-    resize(650, 500);
+    setWindowTitle(tr("Paint"));
 }

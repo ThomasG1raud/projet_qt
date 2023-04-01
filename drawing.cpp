@@ -46,7 +46,7 @@ void Drawing::drawLineTo(const QPoint &end){
     start = end; 
 }
 
-void Drawing::setImage(const QImage& newImage){
+void Drawing::setImage(const QImage &newImage){
     image = newImage;
     modified = true;
     update();

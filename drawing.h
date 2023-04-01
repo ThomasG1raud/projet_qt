@@ -7,7 +7,7 @@ class Drawing : public QWidget{
 Q_OBJECT
 
 public:
-    Drawing(QWidget *parent = 0);
+    Drawing(QWidget *parent = nullptr);
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
