@@ -3,6 +3,7 @@
  
 
 #include <QMainWindow>
+#include <QWidget>
  
 class Drawing;
 
