@@ -5,7 +5,7 @@ Drawing::Drawing(QWidget *parent) : QWidget(parent){
     setAttribute(Qt::WA_StaticContents);
     modified = false;
     drawing = false;
-    penWidth = 10;
+    penWidth = 3;
     penColor = Qt::black;
     image = QImage(this->size(), QImage::Format_ARGB32_Premultiplied);
     image.fill(Qt::white);

@@ -1,4 +1,5 @@
 #include <QtWidgets>
+#include <QColorDialog>
  
 #include "mainwindow.h"
 #include "drawing.h"
@@ -38,6 +39,14 @@ void MainWindow::createActions(){
     newAction = new QAction(tr("New"), this);
     connect(newAction, SIGNAL(triggered()), this, SLOT(newFile()));
     newAction->setShortcut(QKeySequence::New);
+
+    changeColorAction = new QAction(tr("Change color"), this);
+    connect(changeColorAction, SIGNAL(triggered()), this, SLOT(changeColor()));    
+
+    changeWidthAction = new QAction(tr("Change width"), this);
+    connect(changeWidthAction, SIGNAL(triggered()), this, SLOT(changeWidth()));
+    
+     
 }
 
 void MainWindow::createMenus(){
@@ -51,8 +60,13 @@ void MainWindow::createMenus(){
     fileMenu->addAction(openAction);
     fileMenu->addAction(saveAction);
     
+    editMenu = new QMenu(tr("&Edit"), this);
+    editMenu->addAction(changeColorAction);
+    editMenu->addAction(changeWidthAction);
     
+
     menuBar()->addMenu(fileMenu);
+    menuBar()->addMenu(editMenu);
     menuBar()->addMenu(helpMenu);
     
 }
@@ -86,4 +100,20 @@ void MainWindow::newFile(){
     delete drawing;
     drawing = newDrawing;
     setWindowTitle(tr("Paint"));
+}
+
+void MainWindow::changeColor(){
+    QColor color = QColorDialog::getColor(drawing->penColor, this, tr("Choose color"));
+    if (color.isValid()) {
+        drawing->penColor = color;
+    }
+}
+
+void MainWindow::changeWidth(){    
+    QStringList widths;
+    for (int i = 1; i <= 100; i++) {
+        widths << QString::number(i);
+    }
+    QString selectedWidth = QInputDialog::getItem(this, tr("Pen thickness"), tr("Select pen thickness:"), widths, drawing->penWidth - 1, false);
+    drawing->penWidth = selectedWidth.toInt();
 }

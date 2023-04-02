@@ -8,7 +8,8 @@ Q_OBJECT
 
 public:
     Drawing(QWidget *parent = nullptr);
-
+    int penWidth;
+    QColor penColor;
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
@@ -20,16 +21,13 @@ private:
     
     bool modified;
     bool drawing;
-    int penWidth;
-    QColor penColor;
+    
+    
     QPoint start;
     QImage image;
 
 public slots:
     void setImage(const QImage& newImage);
-
-    
-
 };
 
 #endif
