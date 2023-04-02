@@ -69,12 +69,14 @@ void MainWindow::createMenus(){
     editMenu->addAction(changeWidthAction);
     editMenu->addAction(resizeAction);
     
-    editMenu->addAction(drawSquareAction);
-    editMenu->addAction(drawCircleAction);
+    drawMenu = new QMenu(tr("&Draw"),this);
+    drawMenu->addAction(drawSquareAction);
+    drawMenu->addAction(drawCircleAction);
     
 
     menuBar()->addMenu(fileMenu);
     menuBar()->addMenu(editMenu);
+    menuBar()->addMenu(drawMenu);
     menuBar()->addMenu(helpMenu);
 }
 
@@ -167,12 +169,10 @@ void MainWindow::resizeImage(){
 
 void MainWindow::drawSquare(){
     QPoint endPoint(100, 100); 
-    QColor color(Qt::black); 
-    drawing->drawSquare(endPoint, color); 
+    drawing->drawSquare(endPoint, drawing->penColor); 
 }
 
 void MainWindow::drawCircle(){
     QPoint endPoint(100, 100); 
-    QColor color(Qt::black); 
-    drawing->drawCircle(endPoint, color); 
+    drawing->drawCircle(endPoint, drawing->penColor); 
 }

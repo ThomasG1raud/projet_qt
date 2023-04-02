@@ -29,6 +29,7 @@ private:
     QMenu *helpMenu;
     QMenu *fileMenu;
     QMenu *editMenu;
+    QMenu *drawMenu;
 
     QAction *aboutAction;
     QAction *aboutQtAction;
