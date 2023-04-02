@@ -10,7 +10,7 @@ MainWindow::MainWindow(){
     drawing = new Drawing;
     setCentralWidget(drawing);
     setWindowTitle(tr("Paint"));
-    resize(650, 500);
+    resize(drawing->getImageWidth(), drawing->getImageHeight());
 }
 
 void MainWindow::about(){
