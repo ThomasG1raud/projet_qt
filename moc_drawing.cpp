@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Drawing_t {
-    QByteArrayData data[4];
-    char stringdata0[27];
+    QByteArrayData data[9];
+    char stringdata0[81];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,10 +35,16 @@ static const qt_meta_stringdata_Drawing_t qt_meta_stringdata_Drawing = {
 QT_MOC_LITERAL(0, 0, 7), // "Drawing"
 QT_MOC_LITERAL(1, 8, 8), // "setImage"
 QT_MOC_LITERAL(2, 17, 0), // ""
-QT_MOC_LITERAL(3, 18, 8) // "newImage"
+QT_MOC_LITERAL(3, 18, 8), // "newImage"
+QT_MOC_LITERAL(4, 27, 11), // "resizeImage"
+QT_MOC_LITERAL(5, 39, 5), // "width"
+QT_MOC_LITERAL(6, 45, 6), // "height"
+QT_MOC_LITERAL(7, 52, 13), // "getImageWidth"
+QT_MOC_LITERAL(8, 66, 14) // "getImageHeight"
 
     },
-    "Drawing\0setImage\0\0newImage"
+    "Drawing\0setImage\0\0newImage\0resizeImage\0"
+    "width\0height\0getImageWidth\0getImageHeight"
 };
 #undef QT_MOC_LITERAL
 
@@ -48,7 +54,7 @@ static const uint qt_meta_data_Drawing[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -56,10 +62,16 @@ static const uint qt_meta_data_Drawing[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   19,    2, 0x0a /* Public */,
+       1,    1,   34,    2, 0x0a /* Public */,
+       4,    2,   37,    2, 0x0a /* Public */,
+       7,    0,   42,    2, 0x0a /* Public */,
+       8,    0,   43,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QImage,    3,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,    5,    6,
+    QMetaType::Int,
+    QMetaType::Int,
 
        0        // eod
 };
@@ -71,6 +83,11 @@ void Drawing::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->setImage((*reinterpret_cast< const QImage(*)>(_a[1]))); break;
+        case 1: _t->resizeImage((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 2: { int _r = _t->getImageWidth();
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
+        case 3: { int _r = _t->getImageHeight();
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
@@ -105,13 +122,13 @@ int Drawing::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 4)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 1;
+        _id -= 4;
     }
     return _id;
 }

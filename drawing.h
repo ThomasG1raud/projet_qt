@@ -5,11 +5,11 @@
 
 class Drawing : public QWidget{
 Q_OBJECT
-
 public:
     Drawing(QWidget *parent = nullptr);
     int penWidth;
     QColor penColor;
+    QImage image;
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
@@ -24,10 +24,12 @@ private:
     
     
     QPoint start;
-    QImage image;
 
 public slots:
     void setImage(const QImage& newImage);
+    void resizeImage(int width, int height);
+    int getImageWidth();
+    int getImageHeight();
 };
 
 #endif

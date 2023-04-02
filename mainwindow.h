@@ -18,6 +18,7 @@ private slots:
     void newFile();
     void changeColor();
     void changeWidth();
+    void resizeImage();
     
 private:
     void createActions();
@@ -34,6 +35,8 @@ private:
     QAction *newAction;
     QAction *changeColorAction;
     QAction *changeWidthAction;
+    QAction *resizeAction;
+    
 
     Drawing *drawing;
 

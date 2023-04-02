@@ -7,7 +7,7 @@ Drawing::Drawing(QWidget *parent) : QWidget(parent){
     drawing = false;
     penWidth = 3;
     penColor = Qt::black;
-    image = QImage(this->size(), QImage::Format_ARGB32_Premultiplied);
+    image = QImage(QSize(1000, 1000), QImage::Format_ARGB32_Premultiplied);
     image.fill(Qt::white);
 }
 
@@ -58,4 +58,21 @@ void Drawing::prettyLayout() {
         update();
         modified = false;
     }
+}
+
+void Drawing::resizeImage(int width, int height){
+    QImage newImage(width, height, QImage::Format_ARGB32_Premultiplied);
+    newImage.fill(Qt::white);
+    QPainter painter(&newImage);
+    painter.drawImage(QPoint(0, 0), image);
+    image = newImage;
+    update();
+}
+
+int Drawing::getImageWidth() {
+    return image.width();
+}
+
+int Drawing::getImageHeight() {
+    return image.height();
 }
