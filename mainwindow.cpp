@@ -45,6 +45,12 @@ void MainWindow::createActions(){
 
     resizeAction = new QAction(tr("Resize"), this);
     connect(resizeAction, SIGNAL(triggered()), this, SLOT(resizeImage()));
+
+    drawSquareAction = new QAction(tr("Draw square"), this);
+    connect(drawSquareAction, SIGNAL(triggered()), this, SLOT(drawSquare()));
+
+    drawCircleAction = new QAction(tr("Draw circle"), this);
+    connect(drawCircleAction, SIGNAL(triggered()), this, SLOT(drawCircle()));
 }
 
 void MainWindow::createMenus(){
@@ -62,6 +68,9 @@ void MainWindow::createMenus(){
     editMenu->addAction(changeColorAction);
     editMenu->addAction(changeWidthAction);
     editMenu->addAction(resizeAction);
+    
+    editMenu->addAction(drawSquareAction);
+    editMenu->addAction(drawCircleAction);
     
 
     menuBar()->addMenu(fileMenu);
@@ -154,4 +163,16 @@ void MainWindow::resizeImage(){
     });
 
     dialog.exec();
+}
+
+void MainWindow::drawSquare(){
+    QPoint endPoint(100, 100); 
+    QColor color(Qt::black); 
+    drawing->drawSquare(endPoint, color); 
+}
+
+void MainWindow::drawCircle(){
+    QPoint endPoint(100, 100); 
+    QColor color(Qt::black); 
+    drawing->drawCircle(endPoint, color); 
 }

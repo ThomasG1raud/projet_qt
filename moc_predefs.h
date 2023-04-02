@@ -279,6 +279,7 @@
 #define __UINTPTR_MAX__ 0xffffffffffffffffUL
 #define __INT_FAST64_WIDTH__ 64
 #define __cpp_decltype 200707L
+#define QT_QPA_PLATFORM wayland
 #define __INT_FAST64_MAX__ 0x7fffffffffffffffL
 #define __GCC_ATOMIC_TEST_AND_SET_TRUEVAL 1
 #define __FLT_NORM_MAX__ 3.40282346638528859811704183484516925e+38F

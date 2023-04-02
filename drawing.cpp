@@ -76,3 +76,19 @@ int Drawing::getImageWidth() {
 int Drawing::getImageHeight() {
     return image.height();
 }
+
+void Drawing::drawSquare(const QPoint &endPoint, QColor color) {
+    QPainter painter(&image);
+    painter.setPen(QPen(color, penWidth, Qt::SolidLine, Qt::RoundCap));
+    painter.drawRect(QRect(start, endPoint));
+    modified = true;
+    update();
+}
+
+void Drawing::drawCircle(const QPoint &endPoint, QColor color) {
+    QPainter painter(&image);
+    painter.setPen(QPen(color, penWidth, Qt::SolidLine, Qt::RoundCap));
+    painter.drawEllipse(QRect(start, endPoint));
+    modified = true;
+    update();
+}

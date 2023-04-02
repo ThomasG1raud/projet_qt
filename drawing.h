@@ -10,6 +10,9 @@ public:
     int penWidth;
     QColor penColor;
     QImage image;
+    void drawSquare(const QPoint &endPoint, QColor color);
+    void drawCircle(const QPoint &endPoint, QColor color);
+    
 protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
@@ -18,7 +21,9 @@ protected:
 private:
     void drawLineTo(const QPoint &endPoint);
     void prettyLayout();
-    
+
+
+
     bool modified;
     bool drawing;
     
