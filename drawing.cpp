@@ -43,7 +43,7 @@ void Drawing::drawLineTo(const QPoint &end){
     painter.setPen(QPen(penColor, penWidth, Qt::SolidLine, Qt::RoundCap));
     painter.drawLine(start, end);
     modified = true;
-    update(QRect(start, end));
+    update();
     start = end; 
 }
 
