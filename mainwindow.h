@@ -44,7 +44,6 @@ private:
     
 
     Drawing *drawing;
-
 };
  
 #endif
